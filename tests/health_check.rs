@@ -1,6 +1,9 @@
 use std::future::IntoFuture;
 
-use email_newsletter::{configuration::{get_configuration, DatabaseSettings}, startup::run};
+use email_newsletter::{
+    configuration::{get_configuration, DatabaseSettings},
+    startup::run,
+};
 use reqwest::Client;
 use sqlx::{Connection, Executor, PgConnection, PgPool};
 use tokio::net::TcpListener;
@@ -43,7 +46,7 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
         .fetch_one(&app.db_pool)
         .await
         .expect("Failed to fetch saved subscription.");
-        assert_eq!(saved.email, "ursula_le_guin@gmail.com");
+    assert_eq!(saved.email, "ursula_le_guin@gmail.com");
     assert_eq!(saved.name, "le guin");
 }
 

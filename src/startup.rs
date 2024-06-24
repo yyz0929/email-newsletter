@@ -1,6 +1,10 @@
 use std::sync::Arc;
 
-use axum::{routing::{get, post}, serve::Serve, Router};
+use axum::{
+    routing::{get, post},
+    serve::Serve,
+    Router,
+};
 use sqlx::PgPool;
 use tokio::net::TcpListener;
 

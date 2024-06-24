@@ -10,5 +10,7 @@ async fn main() {
     let connection = PgPool::connect(&connection_string)
         .await
         .expect("Failed to connect to Postgres.");
-    email_newsletter::startup::run(listener, connection).await.unwrap();
+    email_newsletter::startup::run(listener, connection)
+        .await
+        .unwrap();
 }

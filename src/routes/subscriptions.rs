@@ -14,10 +14,7 @@ pub struct FormData {
     name: String,
 }
 
-pub async fn subscribe(
-    State(pool): State<Arc<PgPool>>,
-    Form(form): Form<FormData>,
-) -> StatusCode {
+pub async fn subscribe(State(pool): State<Arc<PgPool>>, Form(form): Form<FormData>) -> StatusCode {
     match sqlx::query!(
         r#"
         INSERT INTO subscriptions (id, email, name, subscribed_at)
